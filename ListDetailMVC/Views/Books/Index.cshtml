@@ -9,6 +9,38 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+<div>
+    @if(ViewBag.Prev != null)
+    {
+        <a asp-action="Index" asp-route-page="@ViewBag.Prev" asp-route-search="@ViewBag.Search">
+            prev
+        </a>
+    }
+    else
+    {
+        <span>
+            prev
+        </span>
+    }
+    <span>/</span>
+    @if(ViewBag.Next != null)
+    {
+        <a asp-action="Index" asp-route-page="@ViewBag.Next" asp-route-search="@ViewBag.Search">
+            next
+        </a>
+    }
+    else
+    {
+        <span>
+            next
+        </span>
+    }
+</div>
+<form asp-action="Index" method="get">
+    Title: 
+    <input type="text" name="search" value="@ViewBag.Search" />
+    <input type="submit" value="Filter" />
+</form>
 <table class="table">
     <thead>
         <tr>
